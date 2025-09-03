@@ -1,6 +1,3 @@
-// 2. Ejemplo de Cómo Obtener Código Limpio
-// codigo claro (despues)
-
 class CalculadoraEstadisticasLimpio {
     public void imprimirEstadisticas(double[] numeros) {
         double media = calcularMedia(numeros);
@@ -27,6 +24,3 @@ class CalculadoraEstadisticasLimpio {
         return suma / numeros.length;
     }
 }
-
-// La clase CalculadoraEstadisticasLimpio ahora es más legible y fácil de mantener
-// se han utilizado nombres de variables más descriptivos

@@ -1,42 +1,4 @@
-class Pedido {
-    // int idCliente;
-    String nombreCliente;
-    String direccionCliente;
-    java.util.List<ItemPedido> items;
-    boolean tieneDescuento;
-    double porcentajeDescuento;
-    boolean envioExpress;
-    String metodoPago;
-
-    public Pedido(
-        int idCliente,
-        String nombreCliente,
-        String direccionCliente,
-        java.util.List<ItemPedido> items,
-        boolean tieneDescuento,
-        double porcentajeDescuento,
-        boolean envioExpress,
-        String metodoPago) {
-        // this.idCliente = idCliente;
-        this.nombreCliente = nombreCliente;
-        this.direccionCliente = direccionCliente;
-        this.items = items;
-        this.tieneDescuento = tieneDescuento;
-        this.porcentajeDescuento = porcentajeDescuento;
-        this.envioExpress = envioExpress;
-        this.metodoPago = metodoPago;
-    }
-}
-
-class ItemPedido {
-    int idProducto;
-    int cantidad;
-
-    public ItemPedido(int idProducto, int cantidad) {
-        this.idProducto = idProducto;
-        this.cantidad = cantidad;
-    }
-}
+import java.util.List;
 
 class ProcesadorPedidosRefactor {
     public void procesar(Pedido pedido) {
@@ -49,7 +11,7 @@ class ProcesadorPedidosRefactor {
         actualizarInventario(pedido.items);
     }
 
-    private double calcularTotal(java.util.List<ItemPedido> items, boolean descuento, double porcentajeDescuento) {
+    private double calcularTotal(List<ItemPedido> items, boolean descuento, double porcentajeDescuento) {
         double total = 0;
         for (ItemPedido item : items) {
             double precio = obtenerPrecioProducto(item.idProducto);
@@ -66,7 +28,6 @@ class ProcesadorPedidosRefactor {
     }
 
     private void procesarPago(String metodoPago) {
-        // convert switch to role switch
         switch (metodoPago) {
             case "tarjeta":
                 System.out.println("Procesando pago con tarjeta...");
@@ -85,14 +46,10 @@ class ProcesadorPedidosRefactor {
         System.out.println("Total: $" + total);
     }
 
-    private void actualizarInventario(java.util.List<ItemPedido> items) {
+    private void actualizarInventario(List<ItemPedido> items) {
         for (ItemPedido item : items) {
             System.out.println("Actualizando inventario: Producto " + item.idProducto +
                     ", reducido en " + item.cantidad + " unidades");
         }
     }
 }
-
-// La clase ProcesadorPedidosRefactor ahora es más modular y fácil de mantener
-// se evita codigo repetido
-// se abstrae en un solo lugar
